@@ -58,10 +58,13 @@ newRole.save().then((res) => {
         password: CryptoJS.HmacSHA256('12345678', Key.secretOrkeyApp),
         role: res._id
     });
-    newStaff.save().then((res) => {
+    newStaff.save().then((res,err) => {
         if (res) {
             console.log('新建用户成功')
             fs.unlinkSync('./makeStaff.js');
+            return '新建用户成功'
+        } else {
+            return err
         }
     })
 
