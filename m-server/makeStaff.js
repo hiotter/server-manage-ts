@@ -67,5 +67,7 @@ newRole.save().then((res) => {
             return err
         }
     })
-    return '新建用户成功'
+    
 })
+
+return '新建用户成功'
