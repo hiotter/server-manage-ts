@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const Key = require('./configuration/dev')
 const databaseAddress = Key.databaseAddress
 const CryptoJS = require('crypto-js')
+const fs = require('fs')
 
 //连接mongo数据库
 mongoose.connect(databaseAddress, {
@@ -60,7 +61,7 @@ newRole.save().then((res) => {
     newStaff.save().then((res) => {
         if (res) {
             console.log('新建用户成功')
-
+            fs.unlinkSync('./makeStaff.js');
         }
     })
 
