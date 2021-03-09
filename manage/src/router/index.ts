@@ -47,8 +47,8 @@ function renderMenu(routes: RouteRecordRaw[]) {
                     icon: route.meta.icon,
                     title: route.meta.title,
                     name: route.name,
-                    children: route.children.filter(child => (route.meta && route.meta.hidden == true) ? false : true).map(child => {
-                         if (child.meta) {
+                    children: route.children.filter(child => (child.meta && child.meta.hidden == true) ? false : true).map(child => {
+                        if (child.meta) {
                             return {
                                 icon: child.meta.icon,
                                 title: child.meta.title,
