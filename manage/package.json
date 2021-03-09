@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author":"<%=author%>",
-  "description": "<%=description%>",
+  "description": "<%=description%> manage",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
