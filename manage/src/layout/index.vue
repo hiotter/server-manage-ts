@@ -14,12 +14,12 @@
         <div style="background: rgba(255, 255, 255, 0.2); flex: 1">
           <div style="display: flex; align-items: center" v-if="!collapsed">
             <img
-              src="../assets/baxiaocao.jpg"
+              src="../assets/ebuy-logo.png"
               alt=""
               style="width: 50px; margin: 0 15px 0 0"
               class="logo-icon"
             />
-            <div style="font-size: 18px">拔小草</div>
+            <div style="font-size: 18px">EBUY</div>
           </div>
         </div>
       </div>
