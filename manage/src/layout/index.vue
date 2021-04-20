@@ -70,7 +70,7 @@
         "
       >
         <div style="font-size: 24px; font-family: serif; min-width: 160px">
-          后台管理系统
+          后台管理系统 {{routeName}}
         </div>
         <div style="font-size: 18px">v0.0.1</div>
         <div class="d-flex a-center mx-5" style="padding-top: 15px">
@@ -138,6 +138,7 @@ import {
   onBeforeRouteUpdate,
   RouteRecordRaw,
 } from "vue-router";
+import log from "@/api/log";
 
 export default defineComponent({
   name: "Login",
@@ -149,26 +150,12 @@ export default defineComponent({
     const route = useRoute();
     const store = useStore();
     const openKeys = ref<string[]>([]);
-    const routeName = ref<string[]>([route.name as string]);
 
     const menu = computed(() => store.getters.getMenu);
+    const routeName = computed(() => [route.name as string]);
     const userInfo = computed(() => store.getters.getUSerInfo);
     const rootSubmenuKeys = computed(() => {
       return menu.value.map((item: RouteRecordRaw) => item.name);
-    });
-
-    onBeforeRouteUpdate(() => {
-      openKeys.value = [];
-      menu.value
-        .filter((item: RouteRecordRaw) => item.children)
-        .forEach((item: RouteRecordRaw) => {
-          if (
-            item.children &&
-            item.children.some((child) => child.name == route.name)
-          ) {
-            openKeys.value = [item.name ? item.name.toString() : ""];
-          }
-        });
     });
 
     const callNavigation = (e: { key: string }) => {
@@ -177,31 +164,22 @@ export default defineComponent({
       });
     };
 
-    const callOpen = () => {
-      openKeys.value = [];
-
-      const newmenu = menu.value.filter((item: RouteRecordRaw) => {
-        return item.children;
-      });
-
-      newmenu.forEach((item: RouteRecordRaw) => {
-        if (
-          item.children &&
-          item.children.some((child) => child.name == route.name)
-        ) {
-          openKeys.value = [item.name ? item.name.toString() : ""];
-        }
-      });
-    };
-    callOpen();
     const onOpenChange = (oks: string[]) => {
-      const latestOpenKey = oks.find((key) => oks.indexOf(key) === -1);
+      let latestOpenKey = "";
+      if (oks.length == 2) {
+        latestOpenKey = oks[1];
+      }
+      if (oks.length == 1) {
+        latestOpenKey = oks[0];
+      }
+
       if (rootSubmenuKeys.value.indexOf(latestOpenKey) === -1) {
         openKeys.value = oks;
       } else {
         openKeys.value = latestOpenKey ? [latestOpenKey] : [];
       }
       // 默认跳转第一个子菜单
+
       if (latestOpenKey) {
         const key: string = menu.value.find(
           (item: RouteRecordRaw) => item.name == latestOpenKey
