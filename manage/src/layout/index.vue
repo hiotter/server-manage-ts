@@ -166,11 +166,8 @@ export default defineComponent({
 
     const onOpenChange = (oks: string[]) => {
       let latestOpenKey = "";
-      if (oks.length == 2) {
-        latestOpenKey = oks[1];
-      }
-      if (oks.length == 1) {
-        latestOpenKey = oks[0];
+      if (oks.length > 0) {
+        latestOpenKey = oks[oks.length - 1];
       }
 
       if (rootSubmenuKeys.value.indexOf(latestOpenKey) === -1) {
