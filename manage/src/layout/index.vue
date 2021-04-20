@@ -70,7 +70,7 @@
         "
       >
         <div style="font-size: 24px; font-family: serif; min-width: 160px">
-          后台管理系统 {{routeName}}
+          后台管理系统 
         </div>
         <div style="font-size: 18px">v0.0.1</div>
         <div class="d-flex a-center mx-5" style="padding-top: 15px">
