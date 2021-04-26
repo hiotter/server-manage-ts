@@ -19,7 +19,7 @@
               style="width: 50px; margin: 0 15px 0 0"
               class="logo-icon"
             />
-            <div style="font-size: 18px">EBUY</div>
+            <div style="font-size: 18px">Hita</div>
           </div>
         </div>
       </div>
@@ -282,7 +282,7 @@ export default defineComponent({
 .logo-icon {
   border-radius: 10px;
   background: #f7f7f7;
-  box-shadow: 20px 20px 60px #d2d2d2, -20px -20px 60px #ffffff;
+  /* box-shadow: 20px 20px 60px #d2d2d2, -20px -20px 60px #ffffff; */
 }
 .ant-menu-submenu-title {
   display: flex;
